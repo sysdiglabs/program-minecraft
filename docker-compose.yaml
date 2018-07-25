@@ -23,6 +23,7 @@ services:
       EULA: "TRUE"
       TYPE: "SPIGOT"
       VERSION: "1.11.2"
+      MEMORY: "1G"
     tty: true
     stdin_open: true
     restart: always

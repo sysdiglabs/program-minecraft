@@ -20,6 +20,10 @@ Throughout the book you'll create small snippets of code to execute. Any code yo
 
 The book will tell you to write your code in IDLE and then hit F5 to run it. In this environment you'll do things differently. Write your code in Code, save it to the `src` directory, then from a command line (or terminal) run `docker exec -it mc-pi-dev bash`. This will give you a terminal inside the Python development container. From here you can run `python <myscript>` where `<myscript>` is the name of the file containing your code. You can leave this terminal up while you're going through the exercises.
 
+## Restarting the Server
+
+For any numnber of reasons you may need to restart the server and Python container. If the server is still running and your terminal is showing the console logs of the server, simply hit `ctrl-c` to stop the server. Then run `docker-compose down` to delete the old server instance, and then run `docker-compose up` to start a new instance. You'll need to be in the folder containing the `docker-compose.yml` file in this repository. This will not delete any of your server's data (see below on how to do that).
+
 ## Minecraft Data
 
 All data for the Minecraft server is stored in the `data` directory. To reset the server, stop the server (`docker-compose down`), then remove all the files and folders in the `data` folder. The Minecraft Server will recreate these files when it starts. Note that this will also delete any Worlds you've created!
@@ -31,3 +35,4 @@ You might want to have access to the Minecraft Server's console to execute comma
 ## Increasing the Memory Available to Minecraft
 
 Depending on your system and depending on what you're building, you might need to increase the memory of the Minecraft Server. Edit the `docker-compose.yml` file, changing the server's environment variable "MEMORY". Currently it is set to 1G.
+ 

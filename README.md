@@ -6,7 +6,7 @@ So you've bought ["Learn to Program with Minecraft"](https://nostarch.com/progra
 2. Minecraft - To play the Game. https://minecraft.net/en-us/download/
 3. MultiMC - Optional but recommened. https://multimc.org/
 4. Docker - You'll use this to run the Minecraft Server and Python development container. https://www.docker.com/get-docker
-5. Visual Studio Code - Not required, but provides an excellent text editor for programming. This provides the same (and more) functionality to IDLE which is referenced in the book. https://code.visualstudio.com/download
+5. Visual Studio Code - VS Code online runs within a container and it's ready to be connected to the minecraft server. 
 
 ## Getting started
 
@@ -14,15 +14,15 @@ Once you've installed the above clone this repo using git, or download this repo
 
 ## Source Code Location
 
-Throughout the book you'll create small snippets of code to execute. Any code you create will need to be placed in the `src` directory. You can make sure you're saving things in the correct location by starting Visual Studio Code (Code for short), clicking the File menu, then clicking "Open Workspace". Select the src folder as the workspace and click open.
+Throughout the book you'll create small snippets of code to execute. Any code you create will need to be placed in the `vscode/src` directory. VS Code online is running on localhost:8080 and this directory is accessible from it. 
 
 ## Executing Your Python Scripts
 
-The book will tell you to write your code in IDLE and then hit F5 to run it. In this environment you'll do things differently. Write your code in Code, save it to the `src` directory, then from a command line (or terminal) run `docker exec -it mc-pi-dev bash`. This will give you a terminal inside the Python development container. From here you can run `python <myscript>` where `<myscript>` is the name of the file containing your code. You can leave this terminal up while you're going through the exercises.
+The book will tell you to write your code in IDLE and then hit F5 to run it. In this environment you'll do things differently. Write your code in the VS Code online and hit the play button to run it.
 
 ## Restarting the Server
 
-For any numnber of reasons you may need to restart the server and Python container. If the server is still running and your terminal is showing the console logs of the server, simply hit `ctrl-c` to stop the server. Then run `docker-compose down` to delete the old server instance, and then run `docker-compose up` to start a new instance. You'll need to be in the folder containing the `docker-compose.yml` file in this repository. This will not delete any of your server's data (see below on how to do that).
+For any number of reasons you may need to restart the server and Python container. If the server is still running and your terminal is showing the console logs of the server, simply hit `ctrl-c` to stop the server. Then run `docker-compose down` to delete the old server instance, and then run `docker-compose up` to start a new instance. You'll need to be in the folder containing the `docker-compose.yml` file in this repository. This will not delete any of your server's data (see below on how to do that).
 
 ## Minecraft Data
 
@@ -34,5 +34,5 @@ You might want to have access to the Minecraft Server's console to execute comma
 
 ## Increasing the Memory Available to Minecraft
 
-Depending on your system and depending on what you're building, you might need to increase the memory of the Minecraft Server. Edit the `docker-compose.yml` file, changing the server's environment variable "MEMORY". Currently it is set to 1G.
+Depending on your system and depending on what you're building, you might need to increase the memory of the Minecraft Server. Edit the `docker-compose.yml` file, changing the server's environment variable "MEMORY". Currently it is set to 5G.
  

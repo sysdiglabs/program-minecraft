@@ -1,5 +1,5 @@
 #https://registry.hub.docker.com/r/codercom/code-server/
-version: '3'
+version: '2'
 services:
   vscode:
     build: ./vscode
@@ -40,4 +40,4 @@ services:
       - "4326:4326"
       - "4327:4327"
     volumes:
-      - "rcon:/opt/rcon-web-admin/db"
+      - "./rcon:/opt/rcon-web-admin/db"

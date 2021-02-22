@@ -3,6 +3,7 @@ version: '3'
 services:
   vscode:
     build: ./vscode
+    container_name: "python-vscode-minecraft"
     ports:
       - "8080:8080"
     volumes:
@@ -11,11 +12,10 @@ services:
     links:
      - minecraft-server
   minecraft-server:
-    image: "itzg/minecraft-server"
-    container_name: "mc-pi-srv"
+    build: ./spigot
+    container_name: "python-minecraft-server"
     ports:
       - "25565:25565"
-      - "4711:4711"
     expose:
       - "25565"
     volumes:
@@ -27,5 +27,17 @@ services:
       TYPE: "SPIGOT"
       VERSION: "1.11.2"
       MEMORY: "5G"
+      CONSOLE: "true"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "testing"
+      RCON_PORT: 28016
     tty: true
     stdin_open: true
+  rcon:
+    image: itzg/rcon
+    container_name: "python-minecraft-rcon"
+    ports:
+      - "4326:4326"
+      - "4327:4327"
+    volumes:
+      - "rcon:/opt/rcon-web-admin/db"

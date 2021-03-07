@@ -18,9 +18,10 @@ RUN rm -f get-pip.py
 
 WORKDIR /vscode
 
-RUN git clone https://github.com/py3minepi/py3minepi
+# RUN git clone https://github.com/py3minepi/py3minepi really old version
+RUN git clone https://github.com/martinohanlon/mcpi
 
-RUN pip3 install --no-cache-dir py3minepi/ && rm -fr py3minepi
+RUN pip3 install --no-cache-dir mcpi/ && rm -fr mcpi
 
 # https://minecraft-stuff.readthedocs.io/en/latest/minecraftshape.html
 RUN pip3 install minecraftstuff

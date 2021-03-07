@@ -4,6 +4,7 @@ import time
 #from minecraftstuff import MinecraftDrawing
 #https://minecraft-stuff.readthedocs.io/en/latest/minecraftdrawing.html
 #https://github.com/martinohanlon/minecraft-stuff
+# https://github.com/martinohanlon/mcpi
 mc = Minecraft.create("minecraft-server")
 
 mc.postToChat("Hello World!")

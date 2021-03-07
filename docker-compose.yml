@@ -18,6 +18,7 @@ services:
       - "25565:25565"
     expose:
       - "25565"
+      - "4711"
     volumes:
       - "./spigot/data:/data"
       - "./spigot/server.properties:/data/server.properties"
@@ -26,7 +27,7 @@ services:
       EULA: "TRUE"
       TYPE: "SPIGOT"
       VERSION: "1.11.2"
-      MEMORY: "5G"
+      MEMORY: "1G"
       CONSOLE: "true"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "testing"

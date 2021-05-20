@@ -1,0 +1,45 @@
+#https://registry.hub.docker.com/r/codercom/code-server/
+version: '2'
+services:
+  vscode:
+    build: ./vscode
+    container_name: "python-vscode-minecraft"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./vscode:/vscode
+      - ./vscode/.config:/home/coder/.config/code-server/
+    links:
+     - minecraft-server
+  minecraft-server:
+    build: ./spigot
+    container_name: "python-minecraft-server"
+    ports:
+      - "25565:25565"
+    expose:
+      - "25565"
+      - "4711"
+    volumes:
+      - "./spigot/data:/data"
+      - "./spigot/server.properties:/data/server.properties"
+      - "./spigot/plugins:/plugins"
+    environment:
+      EULA: "TRUE"
+      TYPE: "SPIGOT"
+      VERSION: "1.11.2"
+      MEMORY: "1G"
+      CONSOLE: "true"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "testing"
+      RCON_PORT: 28016
+    tty: true
+    stdin_open: true
+  rcon:
+    image: itzg/rcon
+    container_name: "python-minecraft-rcon"
+    env_file: ".rcon.env"
+    ports:
+      - "4326:4326"
+      - "4327:4327"
+    volumes:
+      - "./rcon:/opt/rcon-web-admin/db"
